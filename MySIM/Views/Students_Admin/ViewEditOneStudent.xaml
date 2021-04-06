@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MySIM.Views.Students_Admin.ViewEditOneStudent"
+            BarBackgroundColor="#027B88">
+
+    <ContentPage Title="Student Details">
+        <ContentPage.Padding>
+            <OnPlatform x:TypeArguments="Thickness">
+                <!--Prevent iOS status bar from being overwritten-->
+                <On Platform="iOS" Value="20, 40, 20, 20" />
+                <On Platform="Android" Value="0, 20, 0, 20" />
+            </OnPlatform>
+        </ContentPage.Padding>
+
+        <ContentPage.ToolbarItems>
+            <ToolbarItem x:Name="toolbarEdit" Text="Edit" Clicked="EditBtn_Clicked"/>
+        </ContentPage.ToolbarItems>
+
+        <ContentPage.Content>
+            <ScrollView >
+                <StackLayout Margin="20,0,20,0">
+                    <Button x:Name="deleteBtn" Text="&#xf1f8;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="15" Clicked="DeleteBtn_Clicked" IsVisible="false" BackgroundColor="Transparent" TextColor="Gray" HorizontalOptions="End"/>
+
+                    <Label Text="Student Number: " FontAttributes="Bold" FontSize="Medium" Margin="0,0,0,5"/>
+                    <Label x:Name="studNum" FontSize="Medium" Margin="0,0,0,5"/>
+
+                    <Label Text="University Student Number: " FontAttributes="Bold" FontSize="Medium" Margin="0,0,0,5"/>
+                    <Label x:Name="studPUID" FontSize="Medium" Margin="0,0,0,5"/>
+
+                    <Label Text="Login ID: " FontAttributes="Bold" FontSize="Medium" Margin="0,0,0,5"/>
+                    <Label x:Name="loginID" FontSize="Medium" Margin="0,0,0,5"/>
+
+                    <Label Text="Email: " FontAttributes="Bold" FontSize="Medium" Margin="0,0,0,5"/>
+                    <Label x:Name="email" FontSize="Medium" Margin="0,0,0,15"/>
+
+                    <Label Text="First Name:"  FontAttributes="Bold" FontSize="Medium"/>
+                    <Entry x:Name="fName" Placeholder="First Name" FontSize="Subtitle" BackgroundColor="White" Margin="0,0,0,15"/>
+                    <Label x:Name="fNameError" Text="*Please fill in user first name." FontSize="Small" VerticalTextAlignment="Center" TextColor="Red" IsVisible="false" Margin="0,-15,0,15"/>
+
+                    <Label Text="Last Name:" FontAttributes="Bold" FontSize="Medium"/>
+                    <Entry x:Name="lName" Placeholder="Last Name" FontSize="Subtitle" BackgroundColor="White" Margin="0,0,0,15"/>
+                    <Label x:Name="lNameError" Text="*Please fill in user last name." FontSize="Small" VerticalTextAlignment="Center" TextColor="Red" IsVisible="false" Margin="0,-15,0,15"/>
+
+                    <Label Text="Login Password:" FontAttributes="Bold" FontSize="Medium"/>
+                    <Entry x:Name="pwd" Placeholder="Password" FontSize="Subtitle" BackgroundColor="White" Margin="0,0,0,15"/>
+                    <Label x:Name="pwdError" Text="*Please fill in login password." FontSize="Small" VerticalTextAlignment="Center" TextColor="Red" IsVisible="false" Margin="0,-15,0,15"/>
+
+                    <Label Text="University:" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center" />
+                    <!--Reference: https://www.xamboy.com/2019/01/18/using-control-templates-in-xamarin-forms/-->
+                    <Picker x:Name="schoolPicker" ItemsSource="{Binding Schools}" ItemDisplayBinding="{Binding School_Name}" SelectedIndexChanged="UniversityIndexChanged" Title="University" FontSize="Subtitle" TextColor="Black"  Margin="0,0,0,15"/>
+
+                    <Label Text="Course: " FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center" />
+                    <Picker x:Name="coursePicker" ItemsSource="{Binding Courses}" ItemDisplayBinding="{Binding Course_Name}" Title="Course" FontSize="Subtitle" TextColor="Black" Margin="0,0,0,15"/>
+
+                    <Button x:Name="editBtn" Text="Edit" Clicked="EditBtn_Clicked" IsVisible="true" TextColor="Black" BackgroundColor="LightGray"/>
+
+                    <Button x:Name="saveBtn" Text="Save" Clicked="SaveBtn_Clicked" BackgroundColor="#FFD50B" TextColor="Black" IsVisible="false"/>
+                    <Button x:Name="cancelEditBtn" Text="Cancel" Clicked="CancelEditBtn_Clicked" IsVisible="false" TextColor="Black" BackgroundColor="LightGray"/>
+                </StackLayout>
+            </ScrollView>
+        </ContentPage.Content>
+    </ContentPage>
+</TabbedPage>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MySIM.Views.AdminHomeView"
+             BackgroundColor="White">
+
+    <ContentView.Content>
+        <StackLayout>
+            <Grid Margin="20" >
+                <Grid.RowDefinitions >
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.05*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid ColumnDefinitions="*" RowDefinitions="*,20,*" HorizontalOptions="FillAndExpand" Grid.Column="0"  Grid.Row="0"  Margin="0,0,0,20" VerticalOptions="FillAndExpand" >
+                    <Button x:Name="mngCoursesBtn" Grid.Row="0" Grid.RowSpan="3" Clicked="RedirectToManageCourses" Text="&#xf19c;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="25" BackgroundColor="White"/>
+                    <Label Text="Courses" Grid.Row="2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="Black" Margin="0,10,0,0"/>
+                </Grid>
+
+                <Grid ColumnDefinitions="*" RowDefinitions="*,20,*" HorizontalOptions="FillAndExpand" Grid.Column="2"  Grid.Row="0"  Margin="0,0,0,20" VerticalOptions="FillAndExpand" >
+                    <Button x:Name="mngModulesBtn" Grid.Row="0" Grid.RowSpan="3" Clicked="RedirectToManageModules" Text="&#xf02d;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="25" BackgroundColor="White"/>
+                    <Label Text="Modules" Grid.Row="2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="Black" Margin="0,10,0,0"/>
+                </Grid>
+
+                <Grid ColumnDefinitions="*" RowDefinitions="*,20,*" HorizontalOptions="FillAndExpand" Grid.Column="0"  Grid.Row="2"  Margin="0,0,0,20" VerticalOptions="FillAndExpand" >
+                    <Button x:Name="mngStudentsBtn" Grid.Row="0" Grid.RowSpan="3" Clicked="RedirectToManageStudents" Text="&#xf0c0;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="25" BackgroundColor="White"/>
+                    <Label Text="Students" Grid.Row="2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="Black" Margin="0,10,0,0"/>
+                </Grid>
+            </Grid>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

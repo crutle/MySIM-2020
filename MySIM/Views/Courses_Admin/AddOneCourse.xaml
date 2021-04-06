@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MySIM.Views.Courses_Admin.AddOneCourse"
+             Title="Add Course">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <!--Prevent iOS status bar from being overwritten-->
+            <On Platform="iOS" Value="20, 40, 20, 20" />
+            <On Platform="Android" Value="0, 20, 0, 20" />
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="toolbarSave" Text="Save" Clicked="SaveBtn_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="20,0,20,0">
+
+                <Label x:Name="requiredLbl" Text="* Required Fields." FontSize="Small" VerticalTextAlignment="Center" TextColor="Gray" />
+
+                <Label Text="University: *" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center" />
+                <!--Reference: https://www.xamboy.com/2019/01/18/using-control-templates-in-xamarin-forms/-->
+                <Picker x:Name="schoolPicker" ItemsSource="{Binding Schools}" ItemDisplayBinding="{Binding School_Name}" Title="University" FontSize="Subtitle" TextColor="Gray"  Margin="0,0,0,15"/>
+
+                <Label Text="Course Name: *"  FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center"  />
+                <Editor x:Name="crseName" Placeholder="Course Name" FontSize="Subtitle" BackgroundColor="White" Margin="0,0,0,15"  AutoSize="TextChanges" />
+                <Label x:Name="crseNameError" Text="*Please fill in course name." FontSize="Small" VerticalTextAlignment="Center" TextColor="Red" IsVisible="false" Margin="0,-20,0,15"/>
+
+                <Label Text="Application Period:"  FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center"/>
+                <Editor x:Name="crseApplication" Placeholder="Course Application Period" FontSize="Subtitle" BackgroundColor="White" Margin="0,0,0,15" AutoSize="TextChanges"/>
+
+                <Label Text="Overview:"  FontAttributes="Bold" FontSize="Medium"  VerticalTextAlignment="Center"/>
+                <Editor x:Name="crseOverview" Placeholder="Course Overview" FontSize="Subtitle" BackgroundColor="White" Margin="0,0,0,15" AutoSize="TextChanges"/>
+
+                <Label Text="Start and End Date:"  FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center"/>
+                <Editor x:Name="crseDates" Placeholder="Course Start and End Date" FontSize="Subtitle" BackgroundColor="White" Margin="0,0,0,15"  AutoSize="TextChanges"/>
+
+                <Label Text="Structure:"  FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center"/>
+                <Editor x:Name="crseStructure" Placeholder="Course Structure" FontSize="Subtitle" BackgroundColor="White" Margin="0,0,0,15"  AutoSize="TextChanges"/>
+
+                <Label Text="Admission Criteria:"  FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center"/>
+                <Editor x:Name="crseAdmission" Placeholder="Course Admission Criteria" FontSize="Subtitle" BackgroundColor="White" Margin="0,0,0,15"  AutoSize="TextChanges"/>
+
+                <Label Text="Exemptions:"  FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center"/>
+                <Editor x:Name="crseExemptions" Placeholder="Course Exemptions" FontSize="Subtitle" BackgroundColor="White" Margin="0,0,0,15"  AutoSize="TextChanges"/>
+
+                <Label Text="Fees:"  FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center"/>
+                <Editor x:Name="crseFees" Placeholder="Course Fees" FontSize="Subtitle" BackgroundColor="White" Margin="0,0,0,15"  AutoSize="TextChanges"/>
+
+                <Label Text="Profiles:"  FontAttributes="Bold" FontSize="Medium"  VerticalTextAlignment="Center"/>
+                <Editor x:Name="crseProfiles" Placeholder="Course Profiles" FontSize="Subtitle" BackgroundColor="White" Margin="0,0,0,15" AutoSize="TextChanges"/>
+
+                <Label Text="Assessments:"  FontAttributes="Bold" FontSize="Medium"  VerticalTextAlignment="Center"/>
+                <Editor x:Name="crseAssessment" Placeholder="Course Assessments" FontSize="Subtitle" BackgroundColor="White" Margin="0,0,0,15" AutoSize="TextChanges"/>
+
+                <Label Text="Grading:"  FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center"/>
+                <Editor x:Name="crseGrading" Placeholder="Course Grading" FontSize="Subtitle" BackgroundColor="White" Margin="0,0,0,15" AutoSize="TextChanges"/>
+
+                <Label Text="Promotion:"  FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center"/>
+                <Editor x:Name="crsePromotion" Placeholder="Course Promotion" FontSize="Subtitle" BackgroundColor="White" Margin="0,0,0,15" AutoSize="TextChanges"/>
+
+                <Label Text="Attendance Requirement:"  FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center"/>
+                <Editor x:Name="crseAttendance" Placeholder="Course Attendance Requirement" FontSize="Subtitle" BackgroundColor="White" Margin="0,0,0,15" AutoSize="TextChanges"/>
+
+                <Label Text="Graduation:"  FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center"/>
+                <Editor x:Name="crseGrad" Placeholder="Course Graduation" FontSize="Subtitle" BackgroundColor="White" Margin="0,0,0,15" AutoSize="TextChanges"/>
+
+                <Label Text="Website: *"  FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center"/>
+                <Editor x:Name="crseSite" Placeholder="Course Website" FontSize="Subtitle" BackgroundColor="White" Margin="0,0,0,15" AutoSize="TextChanges"/>
+                <Label x:Name="crseSiteError" Text="*Please fill in website." FontSize="Small" VerticalTextAlignment="Center" TextColor="Red" IsVisible="false" Margin="0,-20,0,15"/>
+
+                <Button x:Name="saveBtn" Text="Save" Clicked="SaveBtn_Clicked" BackgroundColor="#FFD50B" TextColor="Black"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MySIM.Views.Courses_Admin.ManageAllCourses"
+             Title="All Courses">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <!--Prevent iOS status bar from being overwritten-->
+            <On Platform="iOS" Value="20, 40, 20, 20" />
+            <On Platform="Android" Value="0, 20, 0, 20" />
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <ContentPage.Content>
+        <StackLayout Margin="20,0,20,0" >
+            <Grid ColumnDefinitions="*, 0.4*" RowDefinitions="auto">
+                <Entry x:Name="searchField" Grid.Column="0" Grid.Row="0" Placeholder="Search by Course or University" FontSize="Subtitle"/>
+                <Button x:Name="searchBtn" Grid.Column="1" Grid.Row="0" Clicked="SearchBtn_Clicked" Text="Search" FontSize="Small" TextColor="Black" BackgroundColor="LightGray" />
+            </Grid>
+
+            <Grid ColumnDefinitions="15,*,50,50" RowDefinitions="Auto" Margin="0,5,0,15" HorizontalOptions="End">
+                <Label Grid.Column="0" Grid.Row="0" Text="&#xf0b0;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"></Label>
+                <Picker x:Name="sortCoursePicker" Grid.Column="1" Grid.Row="0" ItemsSource="{Binding Schools}" ItemDisplayBinding="{Binding School_Name}" Title="University" SelectedIndexChanged="SortIndexChanged" FontSize="Subtitle" BackgroundColor="White" TextColor="Black"  />
+                <Button x:Name="refreshBtn" Grid.Column="2" Grid.Row="0" Clicked="RefreshBtn_Clicked" Text="&#xf2f9;" FontSize="15" FontFamily="{StaticResource FontAwesomeSolid}" BackgroundColor="Transparent"/>
+                <Button x:Name="addBtn" Grid.Column="3" Grid.Row="0" Clicked="AddBtn_Clicked" Text="&#xf067;" FontSize="15" FontFamily="{StaticResource FontAwesomeSolid}" BackgroundColor="Transparent"/>
+            </Grid>
+
+            <Label x:Name="noCourseLbl" Text="- No Courses -" TextColor="Gray" HorizontalOptions="CenterAndExpand" IsVisible="false"/>
+            <Label x:Name="uniNameLbl" TextColor="Gray" HorizontalOptions="CenterAndExpand" IsVisible="false"/>
+
+            <ListView x:Name="courseList" ItemSelected="ListViewItem_Clicked" IsPullToRefreshEnabled="True"
+                              RefreshCommand="{Binding RefreshCommand}"
+                              IsRefreshing="{Binding IsRefreshing}"
+                              Refreshing="CourseList_Refreshing"
+                              RefreshControlColor="Teal"
+                      HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Clicked="Delete_Clicked"
+                                          CommandParameter="{Binding Course_RecordID}"
+                                          Text="Delete" IsDestructive="True" />
+                            </ViewCell.ContextActions>
+
+                            <StackLayout Margin="0,5,0,5">
+                                <!--Cell Heading-->
+                                <Label Text="{Binding Course_Name}" FontAttributes="Bold" TextColor="Black" />
+
+                                <!--Cell Detail-->
+                                <Label TextColor="Gray" >
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Course_School_Name}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

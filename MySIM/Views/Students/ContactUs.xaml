@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MySIM.Views.Students.ContactUs"
+             BarBackgroundColor="#027B88">
+
+    <ContentPage Title="Contact Details">
+        <ContentPage.Padding>
+            <OnPlatform x:TypeArguments="Thickness">
+                <!--Prevent iOS status bar from being overwritten-->
+                <On Platform="iOS" Value="20, 40, 20, 20" />
+                <On Platform="Android" Value="0, 20, 0, 20" />
+            </OnPlatform>
+        </ContentPage.Padding>
+
+        <ContentPage.Content>
+            <ScrollView>
+                <StackLayout Margin="20,0,20,0">
+
+                    <Label Text="General Enquiries" FontAttributes="Bold" FontSize="Large" TextColor="Black"/>
+                    <Label Text="8.30am to 5.30pm (Mon-Fri) &#10;8.30am to 12.30pm (Saturday)&#10;" FontSize="Small"/>
+                    <Grid ColumnDefinitions="auto,*" RowDefinitions="auto, auto" HorizontalOptions="StartAndExpand" Margin="0,0,0,20">
+                        <Label Grid.Column="0" Grid.Row="0" Text="Tel: " FontSize="Small"/>
+                        <Label x:Name="generalTel" Grid.Column="1" Grid.Row="0" Text="6468 8866" FontSize="Small" TextColor="#158367" TextDecorations="Underline"/>
+                        <Label Grid.Column="0" Grid.Row="1" Text="Email: " FontSize="Small"/>
+                        <Label x:Name="generalEmail" Grid.Column="1" Grid.Row="1" Text="receptions@sim.edu.sg " FontSize="Small" TextColor="#158367" TextDecorations="Underline"/>
+                    </Grid>
+
+                    <Label Text="Student Services Enquiries" FontAttributes="Bold" FontSize="Large" TextColor="Black"/>
+                    <Label Text="8.30am to 5.30pm (Mon-Fri)&#10;9.00am to 1.00pm (Saturdays)&#10;&#10;Closed on public holidays and SIM / SIMPL shutdown days" FontSize="Small"/>
+                    <Grid ColumnDefinitions="auto,*" RowDefinitions="auto, auto" HorizontalOptions="StartAndExpand">
+                        <Label Grid.Column="0" Grid.Row="0" Text="Tel: " FontSize="Small"/>
+                        <Label x:Name="studentTel" Grid.Column="1" Grid.Row="0" Text="6248 9393" FontSize="Small" TextColor="#158367" TextDecorations="Underline"/>
+                        <Label Grid.Column="0" Grid.Row="1" Text="Email: " FontSize="Small" />
+                        <Label x:Name="studentEmail" Grid.Column="1" Grid.Row="1" Text="students@sim.edu.sg" FontSize="Small" TextColor="#158367" TextDecorations="Underline"/>
+                    </Grid>
+                    <Label Text="* Students' enquiries sent from Office365 Mymail (eg. xxxx@mymail.sim.edu.sg ) will be responded within 3 working days. Please resend this email using your Office365 Mymail email account if you have not done so." FontAttributes="Bold" FontSize="Small" TextColor="Black" Margin="0,0,0,20"/>
+
+
+                    <Label Text="Programmes Enquiries" FontAttributes="Bold" FontSize="Large" TextColor="Black"/>
+                    <Label Text="8.30am to 5.30pm (Mon-Fri)&#10;9.00am to 1.00pm (Saturdays)&#10;&#10;Closed on public holidays and SIM shutdown days (Eve of Christmas Day, Eve of New Year's Day and Eve of Chinese New Year)" FontSize="Small"/>
+                    <Grid ColumnDefinitions="auto,*" RowDefinitions="auto, auto" HorizontalOptions="StartAndExpand" Margin="0,0,0,20">
+                        <Label Grid.Column="0" Grid.Row="0" Text="Tel: " FontSize="Small"/>
+                        <Label x:Name="programTel" Grid.Column="1" Grid.Row="0" Text="6248 9746" FontSize="Small" TextColor="#158367" TextDecorations="Underline"/>
+                        <Label Grid.Column="0" Grid.Row="1" Text="Email: " FontSize="Small" />
+                        <Label x:Name="programEmail" Grid.Column="1" Grid.Row="1" Text="study@sim.edu.sg" FontSize="Small" TextColor="#158367" TextDecorations="Underline"/>
+                    </Grid>
+
+                    <Label Text="&#10;Counter service will be by prior appointment only." FontSize="Small"/>
+                    <Label Text="&#10;Should you wish to book a face-to-face discussion with our programme counsellors, please click below: " FontSize="Small" />
+                    <Label x:Name="apptBook" Text="HERE" FontSize="Medium" TextColor="#158367" TextDecorations="Underline" Margin="0,0,0,20"/>
+                    
+                </StackLayout>
+            </ScrollView>
+        </ContentPage.Content>
+    </ContentPage>
+</TabbedPage>

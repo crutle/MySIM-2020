@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MySIM.Menu.MenuPage" 
+             Title="Menu" BackgroundColor="White">
+
+    <!--Reference: https://stackoverflow.com/questions/49169049/hamburger-menu-xamarin-forms-masterdetailpage-->
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <!--Prevent iOS status bar from being overwritten-->
+            <On Platform="iOS" Value="20, 40, 20, 20" />
+            <On Platform="Android" Value="0, 20, 0, 20" />
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout x:Name="adminView" VerticalOptions="StartAndExpand" >
+                <Grid ColumnDefinitions="50,*" RowDefinitions="auto,auto,auto,auto" HorizontalOptions="StartAndExpand" >
+                    <!--Admin-->
+
+                    <Label Grid.Column="0" Grid.Row="0"  Text="&#xf015;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="15"  VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="Black" />
+                    <Button x:Name="homeBtn" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="Home" TextColor="Black" BackgroundColor="white" Command="{Binding HomeCommand }" />
+
+                    <Label Grid.Column="0" Grid.Row="1"  Text="&#xf19c;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="15"  VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="Black" />
+                    <Button x:Name="adminCourses" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Text="Courses" TextColor="Black" BackgroundColor="white" Command="{Binding CoursesCommand }" />
+
+                    <Label Grid.Column="0" Grid.Row="2"  Text="&#xf02d;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="15"  VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="Black" />
+                    <Button x:Name="adminModules" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Text="Modules" TextColor="Black" BackgroundColor="White"  Command="{Binding ModulesCommand}" />
+
+                    <Label Grid.Column="0" Grid.Row="3" Text="&#xf0c0;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="15"  VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="Black" />
+                    <Button x:Name="adminStudents" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Text="Students" TextColor="Black" BackgroundColor="White" Command="{Binding StudentsCommand}" />
+                </Grid>
+            </StackLayout>
+
+            <StackLayout x:Name="studentView" VerticalOptions="StartAndExpand">
+                <Grid ColumnDefinitions="50,*" RowDefinitions="auto,auto,auto,auto,auto,auto"  VerticalOptions="Start" HorizontalOptions="StartAndExpand" >
+                    <!--Student-->
+                    <Label Grid.Column="0" Grid.Row="0"  Text="&#xf015;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="15"  VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="Black" />
+                    <Button Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="Home" TextColor="Black" BackgroundColor="white" Command="{Binding HomeCommand }" />
+
+                    <Label Grid.Column="0" Grid.Row="1"  Text="&#xf2c2;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="15" FontAttributes="Bold" TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"  />
+                    <Button Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" x:Name="studDetails" Text="Student Card" TextColor="Black" BackgroundColor="White" Command="{Binding StudentDetailsCommand}" />
+
+                    <Label Grid.Column="0" Grid.Row="2"  Text="&#xf46c;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="15" FontAttributes="Bold" TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"  />
+                    <Button Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" x:Name="studAttendance" Text="Attendance Taking" TextColor="Black" BackgroundColor="White" Command="{Binding StudentAttendanceCommand}" />
+
+                    <Label Grid.Column="0" Grid.Row="3"  Text="&#xf073;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="15"  FontAttributes="Bold" TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                    <Button Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" x:Name="studClass" Text="Class Schedule" TextColor="Black" BackgroundColor="White" Command="{Binding StudentClassCommand}" />
+
+                    <Label Grid.Column="0" Grid.Row="4"  Text="&#xf0e0;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="15"  FontAttributes="Bold" TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                    <Button Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" x:Name="chatbot" Text="MySIM Chatbot" TextColor="Black" BackgroundColor="White" Command="{Binding ChatbotCommand}" />
+
+                    <Label Grid.Column="0" Grid.Row="5"  Text="&#xf544;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="15"  FontAttributes="Bold" TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                    <Button Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" x:Name="contact" Text="Contact Us" TextColor="Black" BackgroundColor="White" Command="{Binding ContactCommand}" />
+                </Grid>
+            </StackLayout>
+
+            <BoxView HeightRequest="0.05" HorizontalOptions="FillAndExpand" BackgroundColor="LightGray"/>
+
+            <Grid ColumnDefinitions="auto" RowDefinitions="*"  HorizontalOptions="FillAndExpand">
+                <!-- <Label Grid.Column="0" Grid.Row="1"  Text="&#xf2f5;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="15"  FontAttributes="Bold" TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" /> -->
+                <Button Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Text="Logout &#xf2f5;" FontSize="15" FontFamily="{StaticResource FontAwesomeSolid}" StyleClass="MenuItemLayoutStyle" Command="{Binding LogoutCommand}" TextColor="Black" BackgroundColor="White"/>
+            </Grid>
+
+            <Label x:Name="errorLbl" Text="Wrong Account Type." IsVisible="false"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

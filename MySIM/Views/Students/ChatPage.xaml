@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:MySIM.ViewModels" xmlns:sfChat="clr-namespace:Syncfusion.XForms.Chat;assembly=Syncfusion.SfChat.XForms"
+             x:Class="MySIM.Views.Students.ChatPage"
+             Title="MySIM Chatbot">
+    
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <!--Prevent iOS status bar from being overwritten-->
+            <On Platform="iOS" Value="20, 40, 20, 20" />
+            <On Platform="Android" Value="0, 0, 0, 0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+    
+    <!--
+       /*  REUSE OF CODE (BELOW)
+        *  Title: SyncfusionExamples/Chat-GettingStarted-in-Xamarin-Forms
+        *  Author: vimal1994
+        *  Date: 20 Jan 2021
+        *  Code version: NA
+        *  Type: Source Code
+        *  Available at: https://github.com/SyncfusionExamples/Chat-GettingStarted-in-Xamarin-Forms
+        */
+    -->
+    <ContentPage.Content>
+        <sfChat:SfChat x:Name="sfChat"
+                       Messages="{Binding Messages}"
+                       CurrentUser="{Binding CurrentUser}"
+                       ShowTimeBreak="True"
+                       ShowTypingIndicator="{Binding ShowTypingIndicator}"/>
+    </ContentPage.Content>
+</ContentPage>

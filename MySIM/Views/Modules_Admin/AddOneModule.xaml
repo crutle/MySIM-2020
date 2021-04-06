@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MySIM.Views.Modules_Admin.AddOneModule"
+             Title="Add Module">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <!--Prevent iOS status bar from being overwritten-->
+            <On Platform="iOS" Value="20, 40, 20, 20" />
+            <On Platform="Android" Value="0, 20, 0, 20" />
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="toolbarSave" Text="Save" Clicked="SaveBtn_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="20,0,20,0">
+                <Label x:Name="requiredLbl" Text="* Required Fields." FontSize="Small" VerticalTextAlignment="Center" TextColor="Gray" />
+
+                <Label Text="Module Code: (cannot be modified after creation) *" FontAttributes="Bold" FontSize="Medium"/>
+                <Entry x:Name="modCode" Placeholder="Module Code" FontSize="Subtitle" BackgroundColor="White" Margin="0,0,0,15"/>
+                <Label x:Name="modCodeError" Text="*Please fill in module code." FontSize="Small" VerticalTextAlignment="Center" TextColor="Red" IsVisible="false" Margin="0,-20,0,15"/>
+
+                <Label Text="Module Name: *" FontAttributes="Bold" FontSize="Medium"/>
+                <Entry x:Name="modName" Placeholder="Module Name" FontSize="Subtitle" BackgroundColor="White" Margin="0,0,0,15"/>
+                <Label x:Name="modNameError" Text="*Please fill in module name." FontSize="Small" VerticalTextAlignment="Center" TextColor="Red" IsVisible="false" Margin="0,-20,0,15"/>
+
+                <Label Text="Module Description: " FontAttributes="Bold" FontSize="Medium"/>
+                <Entry x:Name="modDesc" Placeholder="Module Description" FontSize="Subtitle" BackgroundColor="White" Margin="0,0,0,15"/>
+
+                <Label Text="Lesson Quantity: * " FontAttributes="Bold" FontSize="Medium"/>
+                <Entry x:Name="modQty" Placeholder="Module Lesson Qty" FontSize="Subtitle" BackgroundColor="White" Margin="0,0,0,15"/>
+                <Label x:Name="modQtyError" Text="*Please fill in module lesson quantity." FontSize="Small" VerticalTextAlignment="Center" TextColor="Red" IsVisible="false" Margin="0,-20,0,15"/>
+
+                <Label Text="Class Session: * " FontAttributes="Bold" FontSize="Medium"/>
+                <!--Reference: https://www.xamboy.com/2019/01/18/using-control-templates-in-xamarin-forms/-->
+                <Picker x:Name="classTimePicker" SelectedIndexChanged="ClassTimingChanged" ItemsSource="{Binding Classes}" ItemDisplayBinding="{Binding ClassTiming_Name}" Title="Class Timings" FontSize="Subtitle" TextColor="Black"/>
+                <Label x:Name="startTime"  FontSize="Small" VerticalTextAlignment="Center" IsVisible="false" />
+                <Label x:Name="endTime" FontSize="Small" VerticalTextAlignment="Center"  Margin="0,0,0,15" IsVisible="false" />
+
+                <Label Text="Module Start Date: * " FontAttributes="Bold" FontSize="Medium"/>
+                <DatePicker x:Name="modDate" Format="D"/>
+
+                <Button x:Name="saveBtn" Text="Save" Clicked="SaveBtn_Clicked" BackgroundColor="#FFD50B" TextColor="Black"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MySIM.Views.Students.ClassView"
+             Title="Timetable (List View: Class)">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <!--Prevent iOS status bar from being overwritten-->
+            <On Platform="iOS" Value="20, 40, 20, 20" />
+            <On Platform="Android" Value="0, 20, 0, 20" />
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <ContentPage.Content>
+        <StackLayout Margin="20,0,20,0">
+            <Grid ColumnDefinitions="15,*" RowDefinitions="Auto" Margin="0,5,0,15" HorizontalOptions="End">
+                <Label Grid.Column="0" Grid.Row="0" Text="&#xf0b0;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"></Label>
+                <Picker x:Name="sortModulePicker" Grid.Column="1" Grid.Row="0" ItemsSource="{Binding Users_Students}" ItemDisplayBinding="{Binding FormattedModuleTitle}" Title="Modules" SelectedIndexChanged="SortIndexChanged" FontSize="Subtitle" BackgroundColor="White" TextColor="Black"  />
+            </Grid>
+
+            <Label x:Name="noEnrolledModulesLbl" Text="- No Modules Enrolled-" TextColor="Gray" HorizontalOptions="CenterAndExpand" IsVisible="false"/>
+            <Label x:Name="noClassesLbl" Text="- No Classes -" TextColor="Gray" HorizontalOptions="CenterAndExpand" IsVisible="false"/>
+
+            <ListView x:Name="enrolledModuleList" IsPullToRefreshEnabled="True"
+                      RefreshCommand="{Binding RefreshCommand}"
+                      IsRefreshing="{Binding IsRefreshing}"
+                      Refreshing="EnrolledModuleList_Refreshing"
+                      RefreshControlColor="Teal"
+                      HasUnevenRows="True"
+                      SelectionMode="None">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="0,5,0,5">
+                                <!--Cell Heading-->
+                                <Label Text="{Binding ModuleClass_Date}" FontAttributes="Bold" TextColor="Black" />
+
+                                <!--Cell Detail-->
+                                <Label TextColor="Gray" >
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding FormattedClassDetails}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

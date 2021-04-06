@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"      
+            x:Class="MySIM.Views.Students.ClassSchedule"
+            Title="Class Schedule"
+            BarBackgroundColor="#027B88">
+
+    <ContentPage Title="Calendar View">
+        <ContentPage.Padding>
+            <OnPlatform x:TypeArguments="Thickness">
+                <!--Prevent iOS status bar from being overwritten-->
+                <On Platform="iOS" Value="20, 40, 20, 20" />
+                <On Platform="Android" Value="0, 20, 0, 20" />
+            </OnPlatform>
+        </ContentPage.Padding>
+
+        <ContentPage.Content>
+            <!--Reference: https://help.syncfusion.com/xamarin/scheduler/getting-started-->
+            <syncfusion:SfSchedule x:Name="classSchedule" ScheduleView="WeekView" DataSource="{Binding Students}" CellTapped="ClassSchedule_CellTapped">
+                <syncfusion:SfSchedule.AppointmentMapping>
+                    <syncfusion:ScheduleAppointmentMapping
+                        SubjectMapping="EventName" 
+                        ColorMapping="Color"
+                        StartTimeMapping="From"
+                        EndTimeMapping="To"                        
+                        LocationMapping="ModuleClass_Location"
+                        IdMapping="ModuleClass_RecordID">
+                    </syncfusion:ScheduleAppointmentMapping>
+                </syncfusion:SfSchedule.AppointmentMapping>
+            </syncfusion:SfSchedule>
+        </ContentPage.Content>
+    </ContentPage>
+</TabbedPage>

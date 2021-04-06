@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MySIM.App">
+    
+    <Application.Resources>
+        <!--
+          REUSE OF CODE (BELOW)
+          Title: Use FontAwesome in a Xamarin.Forms app
+          Author: Sebastian Jensen
+          Date: 15 Feb 2019
+          Code version: NA.
+          Type: Source Code
+          Available at: https://medium.com/@tsjdevapps/use-fontawesome-in-a-xamarin-forms-app-2edf25311db4
+        -->
+        
+        <ResourceDictionary>         
+            <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeSolid"
+                Android="FontAwesome5Solid.otf#Regular"
+                iOS="FontAwesome5Free-Solid" 
+                WinPhone="/Assets/FontAwesome5Solid.otf#Font Awesome 5 Free" />
+
+            <!--Reference: https://theconfuzedsourcecode.wordpress.com/2016/02/12/setting-the-navigationbar-colors-in-xamarin-forms/ -->
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="#12909B"/>
+                <Setter Property="BarTextColor" Value="White"/>
+                <Setter Property="BackgroundColor" Value="White"/>
+            </Style>
+
+            <Style TargetType="ContentView">
+                <Setter Property="BackgroundColor" Value="White"/>
+            </Style>
+
+            <Style TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="White"/>
+            </Style>
+
+        </ResourceDictionary>
+        
+    </Application.Resources>
+
+</Application>

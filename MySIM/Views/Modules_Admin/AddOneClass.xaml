@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MySIM.Views.Modules_Admin.AddOneClass"
+             Title="Add Class">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <!--Prevent iOS status bar from being overwritten-->
+            <On Platform="iOS" Value="20, 40, 20, 20" />
+            <On Platform="Android" Value="0, 20, 0, 20" />
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="toolbarSave" Text="Save" Clicked="SaveBtn_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="20,0,20,0">
+
+                <Label x:Name="requiredLbl" Text="* Required Fields." FontSize="Small" VerticalTextAlignment="Center" TextColor="Gray" />
+
+                <Label Text="Class Timing: * " FontAttributes="Bold" FontSize="Medium"/>
+                <!--Reference: https://www.xamboy.com/2019/01/18/using-control-templates-in-xamarin-forms/-->
+                <Picker x:Name="classTimePicker" SelectedIndexChanged="ClassTimingChanged" ItemsSource="{Binding Classes}" ItemDisplayBinding="{Binding ClassTiming_Name}" Title="Class Timings" FontSize="Subtitle" TextColor="Black"  />
+                <Label x:Name="startTime"  FontSize="Small" VerticalTextAlignment="Center"  />
+                <Label x:Name="endTime" FontSize="Small" VerticalTextAlignment="Center"  Margin="0,0,0,15"/>
+
+                <Label Text="Class Date: * " FontAttributes="Bold" FontSize="Medium"/>
+                <DatePicker x:Name="classDate" Format="D" Margin="0,0,0,15"/>
+
+                <Label Text="Class Location:"  FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center"  />
+                <Editor x:Name="classLoc" Placeholder="Class Location" FontSize="Subtitle" BackgroundColor="White" Margin="0,0,0,15"  AutoSize="TextChanges" />
+
+                <Label Text="Attendance Code:"  FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center"  />
+                <Editor x:Name="classCode" Placeholder="Attendance Code" FontSize="Subtitle" BackgroundColor="White" AutoSize="TextChanges" />
+                <Button x:Name="genAttCodeBtn" Clicked="GenAttCodeBtn_Clicked" Text="Generate Attendance Code"  Margin="0,0,0,15" />
+
+                <Button x:Name="saveBtn" Text="Save" Clicked="SaveBtn_Clicked" BackgroundColor="#FFD50B" TextColor="Black"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MySIM.Views.Modules_Admin.ViewEditClasses"
+             Title="Classes">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <!--Prevent iOS status bar from being overwritten-->
+            <On Platform="iOS" Value="20, 40, 20, 20" />
+            <On Platform="Android" Value="0, 20, 0, 20" />
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <ContentPage.Content>
+        <StackLayout x:Name="addedMods" Margin="20,0,20,0">
+            <Label Text="Click on the Generate button to generate default class schedule according to lesson quantity." TextColor="Gray" HorizontalOptions="StartAndExpand" FontSize="Small" />
+
+            <Grid ColumnDefinitions="*, 100, 50, 50" RowDefinitions="Auto" HorizontalOptions="End">
+                <Button x:Name="generateClassBtn" Grid.Column="0" Grid.Row="0" Clicked="GenerateClassesBtn_Clicked" Text="Generate" FontSize="15" BackgroundColor="LightGray" TextColor="Black" />
+                <Button x:Name="refreshClassesBtn" Grid.Column="2" Grid.Row="0" Clicked="RefreshClassesBtn_Clicked" Text="&#xf2f9;" FontSize="15" FontFamily="{StaticResource FontAwesomeSolid}" BackgroundColor="White"/>
+                <Button x:Name="addBtn" Grid.Column="3" Grid.Row="0" Clicked="AddBtn_Clicked" Text="&#xf067;" FontSize="15" FontFamily="{StaticResource FontAwesomeSolid}" BackgroundColor="White"  />
+            </Grid>
+
+            <Label x:Name="noClassesLbl" Text="- No Classes Added -" TextColor="Gray" HorizontalOptions="CenterAndExpand" IsVisible="false"/>
+
+            <ListView x:Name="classListView" IsPullToRefreshEnabled="True" ItemSelected="ClassListViewItem_Clicked"
+                              RefreshCommand="{Binding RefreshCommand}"
+                              IsRefreshing="{Binding IsRefreshing}"
+                              Refreshing="ClassList_Refreshing"
+                              RefreshControlColor="Teal"
+                      HasUnevenRows="True">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Clicked="Delete_Clicked"
+                                          CommandParameter="{Binding ModuleClass_RecordID}"
+                                          Text="Delete" IsDestructive="True" />
+                            </ViewCell.ContextActions>
+
+                            <StackLayout Margin="0,5,0,5">
+                                <!--Cell Heading-->
+                                <Label Text="{Binding ModuleClass_Date}" FontAttributes="Bold" TextColor="Black" />
+
+                                <!--Cell Detail-->
+                                <Label TextColor="Gray" >
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding ClassTiming_StartTime}" />
+                                            <Span Text=" - " />
+                                            <Span Text="{Binding ClassTiming_EndTime}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

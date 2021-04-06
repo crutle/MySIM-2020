@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MySIM.Views.Students.EnquiryForm"
+              Title="Enquiry Form">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <!--Prevent iOS status bar from being overwritten-->
+            <On Platform="iOS" Value="20, 40, 20, 20" />
+            <On Platform="Android" Value="0, 20, 0, 20" />
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="toolbarSend" Text="Send" Clicked="SendBtn_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout Margin="20,0,20,0">
+
+            <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*" HorizontalOptions="StartAndExpand">
+                <Label Grid.Column="0" Grid.Row="0" Text="General Enquiries:" FontAttributes="Bold" FontSize="Small"/>
+                <Label Grid.Column="1" Grid.Row="0" Text="receptions@sim.edu.sg" FontSize="Small"/>
+
+                <Label Grid.Column="0" Grid.Row="1" Text="Student Services Enquiries:" FontAttributes="Bold" FontSize="Small"/>
+                <Label Grid.Column="1" Grid.Row="1" Text="students@sim.edu.sg" FontSize="Small"/>
+
+                <Label Grid.Column="0" Grid.Row="2" Text="Programmes Enquiries:" FontAttributes="Bold" FontSize="Small"/>
+                <Label Grid.Column="1" Grid.Row="2" Text="study@sim.edu.sg" FontSize="Small" />
+            </Grid>
+
+            <BoxView HeightRequest="0.05" HorizontalOptions="FillAndExpand" BackgroundColor="LightGray" Margin="0,0,0,15"/>
+
+            <Label Text="Email To:  " FontAttributes="Bold" FontSize="Medium" TextColor="Black"/>
+            <Picker x:Name="emailToPicker" Title="Receiver" FontSize="Subtitle" TextColor="Gray" Margin="0,0,0,15">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>receptions@sim.edu.sg</x:String>
+                        <x:String>students@sim.edu.sg</x:String>
+                        <x:String>study@sim.edu.sg</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Label Text="Subject: " FontAttributes="Bold" FontSize="Medium" TextColor="Black"/>
+            <Entry x:Name="emailSubjEntry" Placeholder="Email Subject" FontSize="Subtitle" BackgroundColor="White" Margin="0,0,0,15" />
+
+            <Label Text="Message: " FontAttributes="Bold" FontSize="Medium" TextColor="Black"/>
+            <Editor x:Name="emailMsgEditor" Placeholder="Input message here" FontSize="Subtitle" BackgroundColor="White" Margin="0,0,0,15"  AutoSize="TextChanges" />
+            
+            <Button x:Name="sendBtn" Text="Send" Clicked="SendBtn_Clicked" BackgroundColor="#FFD50B" TextColor="Black"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

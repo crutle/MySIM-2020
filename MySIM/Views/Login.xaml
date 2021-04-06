@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MySIM.Views.Login"
+             NavigationPage.HasBackButton="false"
+             NavigationPage.HasNavigationBar="false"
+             BackgroundColor="#12909B">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <!--Prevent iOS status bar from being overwritten-->
+            <On Platform="iOS" Value="20, 40, 20, 20" />
+            <On Platform="Android" Value="0, 20, 0, 20" />
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <ContentPage.Content>
+        <StackLayout Margin="20,0,20,0">
+            <Label Text="MySIM" Padding="10,20" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Title" TextColor="White"/>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="&#xf007;" Padding="6,0" FontSize="20" FontFamily="{StaticResource FontAwesomeSolid}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White"/>
+                <Entry x:Name="loginID" Placeholder="User ID" ClearButtonVisibility="WhileEditing" HorizontalOptions="FillAndExpand" TextColor="White" PlaceholderColor="White"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="&#xf023;" Padding="6,0" FontSize="20" FontFamily="{StaticResource FontAwesomeSolid}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White"/>
+                <Grid RowDefinitions="*" ColumnDefinitions="*" HorizontalOptions="FillAndExpand">
+                    <Entry x:Name="loginPwd" Grid.Column="0" Placeholder="Password" IsPassword="True" HorizontalOptions="FillAndExpand" TextColor="White" PlaceholderColor="White"/>
+                    <Button x:Name="showHidePwdBtn" Grid.Column="0" HorizontalOptions="End" Clicked="ShowHidePwdBtn_OnClick" Text="show" FontSize="Small" TextColor="White" BackgroundColor="Transparent"/>
+                </Grid>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <CheckBox x:Name="stayLoggedInBtn" IsChecked="False" HorizontalOptions="Start">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="Color" Value="White" />
+                                </VisualState.Setters>
+                            </VisualState>
+
+                            <VisualState x:Name="IsChecked">
+                                <VisualState.Setters>
+                                    <Setter Property="Color" Value="#FFD50B" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </CheckBox>
+                <Label VerticalOptions="Center" TextColor="White">Stay Logged In</Label>
+            </StackLayout>
+
+            <Label x:Name="errorMsg" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" IsVisible="False" TextColor="Red">Incorrect User ID / Password.</Label>
+
+            <Button x:Name="loginBtn" Clicked="LoginBtn_OnClick" Text="Log in" Margin="0,20,0,0" BackgroundColor="#FFD50B"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage> 

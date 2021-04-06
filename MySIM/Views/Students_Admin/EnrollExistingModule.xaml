@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MySIM.Views.Students_Admin.EnrollExistingModule"
+             Title="Enroll Module">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <!--Prevent iOS status bar from being overwritten-->
+            <On Platform="iOS" Value="20, 40, 20, 20" />
+            <On Platform="Android" Value="0, 20, 0, 20" />
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <ContentPage.Content>
+        <StackLayout Margin="20,0,20,0">
+            <Grid ColumnDefinitions="*, 0.4*" RowDefinitions="auto">
+                <Entry x:Name="searchField" Grid.Column="0" Grid.Row="0" Placeholder="Search by Name or Code" FontSize="Subtitle"/>
+                <Button x:Name="searchBtn" Grid.Column="1" Grid.Row="0" Clicked="SearchBtn_Clicked" Text="Search" FontSize="Small" TextColor="Black" BackgroundColor="LightGray" />
+            </Grid>
+
+            <Button x:Name="refreshBtn"  HorizontalOptions="End" Clicked="RefreshBtn_Clicked" Text="&#xf2f9;" FontSize="15" FontFamily="{StaticResource FontAwesomeSolid}" BackgroundColor="White"/>
+            <Label x:Name="noModulesLbl" Text="- No Modules -" TextColor="Gray" HorizontalOptions="CenterAndExpand" IsVisible="false"/>
+
+            <ListView x:Name="moduleList" ItemSelected="ListViewItem_Clicked" IsPullToRefreshEnabled="True"
+                      RefreshCommand="{Binding RefreshCommand}"
+                      IsRefreshing="{Binding IsRefreshing}"
+                      Refreshing="ModuleList_Refreshing"
+                      RefreshControlColor="Teal"
+                      HasUnevenRows="True">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="0,5,0,5">
+                                <!--Cell Heading-->
+                                <Label Text="{Binding Module_Code}" FontAttributes="Bold" TextColor="Black" />
+
+                                <!--Cell Detail-->
+                                <Label TextColor="Gray" >
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Module_Name}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

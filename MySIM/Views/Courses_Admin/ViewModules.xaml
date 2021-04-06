@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MySIM.Views.Courses_Admin.ViewModules" 
+             Title="Added Module(s)">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <!--Prevent iOS status bar from being overwritten-->
+            <On Platform="iOS" Value="20, 40, 20, 20" />
+            <On Platform="Android" Value="0, 20, 0, 20" />
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <ContentPage.Content>
+        <StackLayout Margin="20,0,20,0">
+            <Grid ColumnDefinitions="50, 50" RowDefinitions="Auto" HorizontalOptions="End">
+                <Button x:Name="refreshAddedModulesBtn" Grid.Column="0" Grid.Row="0" Clicked="RefreshAddedModulesBtn_Clicked" Text="&#xf2f9;" FontSize="15" FontFamily="{StaticResource FontAwesomeSolid}" BackgroundColor="White"  />
+                <Button x:Name="addBtn" Grid.Column="1" Grid.Row="0" Clicked="AddBtn_Clicked" Text="&#xf067;" FontSize="15" FontFamily="{StaticResource FontAwesomeSolid}" BackgroundColor="White"  />
+            </Grid>
+
+            <Label x:Name="noAddedModulesLbl" Text="- No Modules Added-" TextColor="Gray" HorizontalOptions="CenterAndExpand" IsVisible="false"/>
+
+            <ListView x:Name="addedModuleList" IsPullToRefreshEnabled="True"
+                              RefreshCommand="{Binding RefreshCommand}"
+                              IsRefreshing="{Binding IsRefreshing}"
+                              Refreshing="AddedModuleList_Refreshing"
+                              RefreshControlColor="Teal"
+                      HasUnevenRows="True">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Clicked="Delete_Clicked"
+                                          CommandParameter="{Binding Module_RecordID}"
+                                          Text="Remove" IsDestructive="True" />
+                            </ViewCell.ContextActions>
+
+                            <StackLayout Margin="0,5,0,5">
+                                <!--Cell Heading-->
+                                <Label Text="{Binding Module_Code}" FontAttributes="Bold" TextColor="Black" />
+
+                                <!--Cell Detail-->
+                                <Label TextColor="Gray" >
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Module_Name}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

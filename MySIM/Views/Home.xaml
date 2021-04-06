@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:views="clr-namespace:MySIM.Views"
+             x:Class="MySIM.Views.Home" >
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <!--Prevent iOS status bar from being overwritten-->
+            <On Platform="iOS" Value="20, 40, 20, 20" />
+            <On Platform="Android" Value="0, 20, 0, 20" />
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Logout" Clicked="LogoutBtn_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!--Setting dynamic views
+            Reference: https://xamgirl.com/stop-doing-isvisibletrue-false-to-show-hide-views-in-runtime-in-xamarin-forms/
+            -->
+            <ControlTemplate x:Key="adminHomeView">
+                <views:AdminHomeView />
+            </ControlTemplate>
+
+            <ControlTemplate x:Key="studentHomeView">
+                <views:StudentHomeView />
+            </ControlTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout Margin="20,0,20,0">
+            <ContentPresenter x:Name="dynamicView"></ContentPresenter>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
