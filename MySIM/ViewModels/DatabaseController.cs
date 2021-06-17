@@ -9,8 +9,7 @@ namespace MySIM.ViewModels
 {
     class DatabaseController
     {
-        //private readonly static string connString = "Data Source=CRUT-PC\\SQLEXPRESS;Initial Catalog=MySIM_DB;User ID=MySIM_Admin;Password=CO3320ProjectNov2020";
-        private readonly static string connString = "workstation id=MySIM-DB.mssql.somee.com;packet size=4096;user id=Crutle_SQLLogin_1;pwd=259z5qttai;data source=MySIM-DB.mssql.somee.com;persist security info=False;initial catalog=MySIM-DB";
+        private readonly static string connString = "";
       
         private readonly SqlCommand cmd = new SqlCommand();
         private readonly SqlConnection cn = new SqlConnection(connString);
